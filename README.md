@@ -1,6 +1,14 @@
-# 배틀그라운드 전적 조회
+# 배틀그라운드 전적 조회 Ios & Android (Native App)
 
 ### 배틀그라운드 사용자 기록을 분석하는 앱 입니다.
+
+### 다음과 같은 기술로 작업 되었습니다.
+
+* React and React Native
+* React hooks
+* Styled component
+* Axios
+
 ### 다음과 같은 기록을 분석합니다.
 
 * 승, 탑, 패
