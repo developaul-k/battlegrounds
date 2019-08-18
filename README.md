@@ -18,13 +18,6 @@
 
 ---
 
-### SKILL
-
-* React and React Native
-* React hooks
-* Styled component
-* Axios
-
 #### TODO
 * [x] 네비게이션 구성 (Home, Detail)
 * [x] 유저 프로필 조회 API
