@@ -1,14 +1,7 @@
 # 배틀그라운드 전적 조회 Ios & Android
 
-### 다음과 같은 기술로 작업 되었습니다.
+### 배틀그라운드 사용자 기록을 분석하는 앱 입니다.<br> With React and React Native + React hooks + Styled component + Axios
 
-* React and React Native
-* React hooks
-* Styled component
-* Axios
-
----
-### 배틀그라운드 사용자 기록을 분석하는 앱 입니다.
 ### 다음과 같은 기록을 분석합니다.
 
 * 승, 탑, 패
@@ -22,6 +15,15 @@
 * 헤드샷
 * 저격
 * 생존
+
+---
+
+### Skill
+
+* 
+* React hooks
+* Styled component
+* Axios
 
 ## TODO
 * [x] 네비게이션 구성 (Home, Detail)
