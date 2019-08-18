@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { SafeAreaView } from 'react-native';
 import { Asset } from 'expo-asset';
-import TabNavigation from './navigation/TabNavigation';
+import Navigator from './navigation/Navigator';
 
 export default function App() {
   const preload = async () => {
@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TabNavigation />
+      <Navigator />
     </SafeAreaView>
   );
 }
