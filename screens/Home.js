@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dimensions, Alert } from 'react-native';
+import { Dimensions, Alert, StatusBar } from 'react-native';
 import styled from 'styled-components';
 import Dropdown from '../components/Dropdown';
 
@@ -69,6 +69,7 @@ const Home = ({ navigation }) => {
 
   return (
     <Container>
+      <StatusBar backgroundColor="black" barStyle="light-content" />
       <Title>배틀그라운드 전적 조회</Title>
       <SearchContainer>
         <Dropdown
