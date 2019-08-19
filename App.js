@@ -7,7 +7,8 @@ export default function App() {
   const preload = async () => {
     try {
       await Asset.loadAsync([
-        require("./assets/splash-battle.png")
+        require("./assets/splash-battle.png"),
+        require("./assets/username.jpg"),
       ]);
     } catch (err) {
       console.log(err);

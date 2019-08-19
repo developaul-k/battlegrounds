@@ -6,7 +6,9 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  ImageBackground,
+  Image
 } from 'react-native';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -22,18 +24,20 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const ProfileContainer = styled.View`
-  width: ${width - 50};
-  height: 100px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
+const ProfileText = styled.Text`
+  padding-top: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.75);
+  font-size: 35px;
+  color: #fff;
 `;
-const ProfileText = styled.Text``;
 
 const Detail = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState(
+  /* const [username, setUsername] = useState(
     navigation.getParam('username')
+  ); */
+  const [username, setUsername] = useState(
+    'pual__k'
   );
   const [resultData, setResultData] = useState(
     []
@@ -43,12 +47,14 @@ const Detail = ({ navigation }) => {
     try {
       setLoading(true);
 
-      const platform = await navigation.getParam(
+      const platform = 'kakao';
+      const username = 'pual__k';
+      /* const platform = await navigation.getParam(
         'platform'
       );
       const username = await navigation.getParam(
-        'username'
-      );
+      'username'
+      ); */
       let accountId = '';
       let seasonId = '';
 
@@ -163,9 +169,21 @@ const Detail = ({ navigation }) => {
         <Loader />
       ) : resultData && resultData.duo ? (
         <Container>
-          <ProfileContainer>
-            <ProfileText>{username}</ProfileText>
-          </ProfileContainer>
+          <ImageBackground
+            source={require('../assets/username.jpg')}
+            style={{
+              marginVertical: 15,
+              width: width - 30,
+              height: '100%',
+              borderRadius: 10,
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+            }}
+          >
+            <ProfileText>{username}님의 전적</ProfileText>
+          </ImageBackground>
           {Object.values(resultData).map(
             (prop, idx) => (
               <List key={idx} {...prop} />

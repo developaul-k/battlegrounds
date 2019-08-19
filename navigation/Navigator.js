@@ -5,14 +5,14 @@ import Detail from '../screens/Detail';
 import Header from '../components/Header';
 
 const AppNavigator = createStackNavigator({
-  Home: {
-    screen: Home,
+  Detail: {
+    screen: Detail,
     navigationOptions: {
       header: () => <Header />,
     },
   },
-  Detail: {
-    screen: Detail,
+  Home: {
+    screen: Home,
     navigationOptions: {
       header: () => <Header />,
     },
