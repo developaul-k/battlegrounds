@@ -1,22 +1,34 @@
-import React from 'react';
-import { View, Image } from 'react-native';
-import { logo } from '../assets/Image';
+import React from "react";
+import { Platform } from "react-native";
+import styled from "styled-components";
+import { logo } from "../assets/Image";
+
+const Container = styled.View`
+  padding-top: ${Platform.OS === "ios" ? 50 : 20};
+  padding-bottom: 20px;
+  background-color: #000;
+`;
+
+const Image = styled.Image`
+  width: 150px;
+  height: 40px;
+`;
 
 const Header = () => (
-  <View
+  <Container
     style={{
       paddingVertical: 20,
-      backgroundColor: 'black',
-      alignItems: 'center',
-    }}>
+      backgroundColor: "black",
+      alignItems: "center"
+    }}
+  >
     <Image
-      style={{ width: 150, height: 40 }}
-      resizeMode={'contain'}
+      resizeMode={"contain"}
       source={{
-        uri: logo,
+        uri: logo
       }}
     />
-  </View>
+  </Container>
 );
 
 export default Header;
