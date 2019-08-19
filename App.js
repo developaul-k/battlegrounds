@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { StatusBar } from "react-native";
 import { Asset } from "expo-asset";
 import Navigator from "./navigation/Navigator";
 
@@ -17,5 +18,10 @@ export default function App() {
     preload();
   }, []);
 
-  return <Navigator />;
+  return (
+    <>
+      <StatusBar backgroundColor="black" barStyle="light-content" />
+      <Navigator />
+    </>
+  );
 }
