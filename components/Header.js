@@ -1,22 +1,27 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import styled from 'styled-components';
 import { logo } from '../assets/Image';
 
+const Container = styled.View`
+  padding: 20px 0;
+  background-color: #000;
+  align-items: center;
+`;
+
+const Image = styled.Image`
+  width: 150px;
+  height: 40px;
+`;
+
 const Header = () => (
-  <View
-    style={{
-      paddingVertical: 20,
-      backgroundColor: 'black',
-      alignItems: 'center',
-    }}>
+  <Container>
     <Image
-      style={{ width: 150, height: 40 }}
       resizeMode={'contain'}
       source={{
-        uri: logo,
+        uri: logo
       }}
     />
-  </View>
+  </Container>
 );
 
 export default Header;
