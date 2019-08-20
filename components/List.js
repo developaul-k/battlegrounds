@@ -52,9 +52,7 @@ const List = ({
       <ListText>
         {wins}승 {top10s}탑 {losses}패
       </ListText>
-      <ListText>
-        저격: {getToFixed(longestKill, 2)}m 최대 거리: {longestKill}
-      </ListText>
+      <ListText>저격: {getToFixed(longestKill, 2)}m</ListText>
       <ListText>K/D: {getKD(kills, losses)}</ListText>
       <ListText>KDA: {getKDA(kills, assists, losses)}</ListText>
       <ListText>
