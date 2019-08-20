@@ -14,17 +14,6 @@ const Image = styled.Image`
   height: 40px;
 `;
 
-const Container = styled.View`
-  padding: 20px 0;
-  background-color: #000;
-  align-items: center;
-`;
-
-const Image = styled.Image`
-  width: 150px;
-  height: 40px;
-`;
-
 const Header = () => (
   <Container
     style={{

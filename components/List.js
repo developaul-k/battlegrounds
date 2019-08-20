@@ -44,9 +44,6 @@ const List = ({
   const getToFixed = (value, length) => {
     return value.toFixed(length);
   };
-  const getAverageDamage = (damageDealt, roundsPlayed) => {
-    return damageDealt / roundsPlayed;
-  };
   const getHeadShot = (headshotkills, kills) =>
     `${((11 / 57) * 100).toFixed(1)}%`;
 
