@@ -25,4 +25,4 @@
 * [x] 유저 시즌 전적 조회 API
 * [ ] CSS 디자인
 * [x] 헤드샷 %로 변경
-* [ ] 유저 시즌 전적 data { solo, duo, squad } 순으로 정렬하기
+* [x] 유저 시즌 전적 data { solo, duo, squad } 순으로 정렬하기
