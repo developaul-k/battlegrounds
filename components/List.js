@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const { width } = Dimensions.get('screen');
 
@@ -9,13 +9,26 @@ const Container = styled.View`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
 `;
 
+const ListContainer = styled.View`
+  margin: 10px;
+  width: ${width / 3 - 20};
+  height: 100px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px 5px 5px #000;
+`;
 const ListText = styled.Text`
-  padding: 20px 10px;
-  width: ${width / 3};
-  background-color: #f1f1f1;
+  font-size: 15px;
+  ${props =>
+    props.bold &&
+    css`
+      font-weight: bold;
+    `}
 `;
 
 const List = ({
@@ -33,34 +46,89 @@ const List = ({
     return (kills / losses).toFixed(2);
   };
   const getKDA = (kills, assists, losses) => {
-    return ((kills + assists) / losses).toFixed(2);
+    return ((kills + assists) / losses).toFixed(
+      2
+    );
   };
-  const getAverageWin = (wins, losses) => {
-    return `${((wins / (wins + losses)) * 100).toFixed(2)}%`;
+  const getAverageWin = (wins, roundsPlayed) => {
+    return `${(
+      (wins / roundsPlayed) *
+      100
+    ).toFixed(2)}%`;
   };
-  const getAverageDamage = (damageDealt, roundsPlayed) => {
-    return (damageDealt / roundsPlayed).toFixed(0);
+  const getAverageDamage = (
+    damageDealt,
+    roundsPlayed
+  ) => {
+    return (damageDealt / roundsPlayed).toFixed(
+      0
+    );
   };
   const getToFixed = (value, length) => {
     return value.toFixed(length);
   };
   const getHeadShot = (headshotkills, kills) =>
-    `${((11 / 57) * 100).toFixed(1)}%`;
+    `${((headshotkills / kills) * 100).toFixed(
+      1
+    )}%`;
 
   return (
     <Container>
-      <ListText>
-        {wins}승 {top10s}탑 {losses}패
-      </ListText>
-      <ListText>저격: {getToFixed(longestKill, 2)}m</ListText>
-      <ListText>K/D: {getKD(kills, losses)}</ListText>
-      <ListText>KDA: {getKDA(kills, assists, losses)}</ListText>
-      <ListText>
-        평균 딜량: {getAverageDamage(damageDealt, roundsPlayed)}
-      </ListText>
-      <ListText>승률: {getAverageWin(wins, losses)}</ListText>
-      <ListText>Top10: {getAverageWin(top10s, losses)}</ListText>
-      <ListText>헤드샷: {getHeadShot(headshotKills, kills)}</ListText>
+      <ListContainer>
+        <ListText>
+          {wins}승 {top10s}탑{' '}
+          {losses - wins - top10s}패
+        </ListText>
+      </ListContainer>
+      <ListContainer>
+        <ListText bold>승률</ListText>
+        <ListText>
+          {getAverageWin(wins, losses)}
+        </ListText>
+      </ListContainer>
+      <ListContainer>
+        <ListText bold>Top10</ListText>
+        <ListText>
+          {getAverageWin(top10s, roundsPlayed)}
+        </ListText>
+      </ListContainer>
+      <ListContainer>
+        <ListText bold>K/D</ListText>
+        <ListText>
+          {getKD(kills, losses)}
+        </ListText>
+      </ListContainer>
+      <ListContainer>
+        <ListText bold>KDA</ListText>
+        <ListText>
+          {getKDA(kills, assists, losses)}
+        </ListText>
+      </ListContainer>
+      <ListContainer>
+        <ListText bold>평균 딜량</ListText>
+        <ListText>
+          {getAverageDamage(
+            damageDealt,
+            roundsPlayed
+          )}
+        </ListText>
+      </ListContainer>
+      <ListContainer>
+        <ListText bold>헤드샷</ListText>
+        <ListText>
+          {getHeadShot(headshotKills, kills)}
+        </ListText>
+      </ListContainer>
+      <ListContainer>
+        <ListText bold>저격</ListText>
+        <ListText>
+          {getToFixed(longestKill, 2)}m
+        </ListText>
+      </ListContainer>
+      <ListContainer>
+        <ListText bold>게임 수</ListText>
+        <ListText>{roundsPlayed}</ListText>
+      </ListContainer>
     </Container>
   );
 };
