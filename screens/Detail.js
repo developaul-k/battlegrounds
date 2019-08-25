@@ -126,7 +126,9 @@ const Detail = ({ navigation }) => {
             let newObject = {};
             let resultObject = {};
 
-            await Object.keys(data.attributes.gameModeStats).forEach(object => {
+            await Object.keys(
+              data.attributes.gameModeStats
+            ).map(object => {
               if (
                 object !== 'solo-fpp' &&
                 object !== 'duo-fpp' &&
@@ -135,11 +137,11 @@ const Detail = ({ navigation }) => {
                 newObject[object] = data.attributes.gameModeStats[object];
               }
             });
-            const objectToArray = await Object.keys(newObject).map(key => {
-              return [key, newObject[key]];
-            });
-            const solo = await objectToArray.splice(1, 1);
-            await objectToArray.unshift(...solo);
+            const objectToArray =
+              await Object.keys(newObject).map(key => {
+                return [key, newObject[key]];
+              });
+            await objectToArray.unshift(...objectToArray.splice(1,1));
             await objectToArray.map(arr => {
               return (resultObject[arr[0]] = arr[1]);
             });
