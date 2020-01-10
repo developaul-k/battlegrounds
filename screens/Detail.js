@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
-  ImageBackground
+  ImageBackground,
+  RefreshControl
 } from 'react-native';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -39,7 +40,7 @@ const Detail = ({ navigation }) => {
   // const [resultData, setResultData] = useState(userData);
   async function fetchUrl() {
     try {
-      setLoading(true);
+      type === 'refresh' ? setRefresh(true) : setLoading(true);
 
       const platform = 'kakao';
       /* const username = 'pual__k'; */
@@ -146,9 +147,9 @@ const Detail = ({ navigation }) => {
         .catch(err => console.log({ errN: 'stat', err }));
     } catch (err) {
       console.log({ errN: 'catch', err });
-      setLoading(false);
+      type === 'refresh' ? setRefresh(false) : setLoading(false);
     } finally {
-      setLoading(false);
+      type === 'refresh' ? setRefresh(false) : setLoading(false);
     }
   }
 
@@ -161,7 +162,14 @@ const Detail = ({ navigation }) => {
       {loading ? (
         <Loader />
       ) : resultData && resultData.duo ? (
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refresh}
+              onRefresh={() => fetchUrl('refresh')}
+            />
+          }
+        >
           <Container>
             <ImageBackground
               source={require('../assets/username.jpg')}
