@@ -2,6 +2,13 @@
 
 배틀그라운드 사용자 기록을 분석하는 앱 입니다.
 
+### 사용기술
+
+- Expo
+- React Native
+- React Hooks
+- Styled Components
+
 #### 다음과 같은 기록을 분석합니다.
 
 * 승, 탑, 패
