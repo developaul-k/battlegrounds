@@ -5,18 +5,18 @@ import Detail from '../screens/Detail';
 import Header from '../components/Header';
 
 const AppNavigator = createStackNavigator({
-  Detail: {
-    screen: Detail,
-    navigationOptions: {
-      header: () => <Header />,
-    },
-  },
   Home: {
     screen: Home,
     navigationOptions: {
-      header: () => <Header />,
-    },
+      header: () => <Header />
+    }
   },
+  Detail: {
+    screen: Detail,
+    navigationOptions: {
+      header: () => <Header />
+    }
+  }
 });
 
 export default createAppContainer(AppNavigator);

@@ -33,16 +33,16 @@ const ProfileText = styled.Text`
 
 const Detail = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
-  // const [username, setUsername] = useState(navigation.getParam('username'));
-  const [username, setUsername] = useState('pual__k');
-  // const [resultData, setResultData] = useState({});
-  const [resultData, setResultData] = useState(userData);
+  const [username, setUsername] = useState(navigation.getParam('username'));
+  // const [username, setUsername] = useState('pual__k');
+  const [resultData, setResultData] = useState({});
+  // const [resultData, setResultData] = useState(userData);
   async function fetchUrl() {
     try {
       setLoading(true);
 
       const platform = 'kakao';
-      const username = 'pual__k';
+      /* const username = 'pual__k'; */
 
       let accountId = '';
       let seasonId = '';
@@ -153,7 +153,7 @@ const Detail = ({ navigation }) => {
   }
 
   useEffect(() => {
-    // fetchUrl();
+    fetchUrl();
   }, []);
 
   return (
