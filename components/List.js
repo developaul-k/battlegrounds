@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Dimensions } from 'react-native';
 import styled, { css } from 'styled-components';
 
@@ -57,31 +57,53 @@ const List = ({
   index,
   roundMostKills
 }) => {
-  const getKD = (kills, losses) => {
-    const kd = (kills / losses).toFixed(2);
-    return kd === 'NaN' ? 0 : kd;
-  };
-  const getKDA = (kills, assists, losses) => {
-    const kda = ((kills + assists) / losses).toFixed(2);
-    return kda === 'NaN' ? 0 : kda;
-  };
-  const getAverageWin = (wins, roundsPlayed) => {
-    const averageWin = `${(wins / roundsPlayed * 100).toFixed(2)}`;
-    console.log({ averageWin });
-    return averageWin === 'NaN' ? '0%' : `${averageWin}%`;
-  };
-  const getAverageDamage = (damageDealt, roundsPlayed) => {
-    const averageDamage = (damageDealt / roundsPlayed).toFixed(0);
-    return averageDamage === 'NaN' ? 0 : averageDamage;
-  };
-  const getToFixed = (value, length) => {
-    const toFixed = value.toFixed(length);
-    return toFixed === 'NaN' ? 0 : toFixed;
-  };
-  const getHeadShot = (headshotkills, kills) => {
-    const headShot = `${(headshotkills / kills * 100).toFixed(1)}`;
-    return headShot === 'NaN' ? 0 : `${headShot}%`;
-  };
+  const getKD = useMemo(
+    () => (kills, losses) => {
+      const kd = (kills / losses).toFixed(2);
+      return kd === 'NaN' ? 0 : kd;
+    },
+    []
+  );
+
+  const getKDA = useMemo(
+    () => (kills, assists, losses) => {
+      const kda = ((kills + assists) / losses).toFixed(2);
+      return kda === 'NaN' ? 0 : kda;
+    },
+    []
+  );
+
+  const getAverageWin = useMemo(
+    () => (wins, roundsPlayed) => {
+      const averageWin = `${(wins / roundsPlayed * 100).toFixed(2)}`;
+      return averageWin === 'NaN' ? '0%' : `${averageWin}%`;
+    },
+    []
+  );
+
+  const getAverageDamage = useMemo(
+    () => (damageDealt, roundsPlayed) => {
+      const averageDamage = (damageDealt / roundsPlayed).toFixed(0);
+      return averageDamage === 'NaN' ? 0 : averageDamage;
+    },
+    []
+  );
+
+  const getToFixed = useMemo(
+    () => (value, length) => {
+      const toFixed = value.toFixed(length);
+      return toFixed === 'NaN' ? 0 : toFixed;
+    },
+    []
+  );
+
+  const getHeadShot = useMemo(
+    () => (headshotkills, kills) => {
+      const headShot = `${(headshotkills / kills * 100).toFixed(1)}`;
+      return headShot === 'NaN' ? 0 : `${headShot}%`;
+    },
+    []
+  );
 
   return (
     <Container>

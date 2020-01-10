@@ -13,7 +13,7 @@ import axios from 'axios';
 import { API_END_POINT, API_KEY } from '../env';
 import List from '../components/List';
 import Loader from '../components/Loader';
-import { userData } from '../dummyData';
+// import { userData } from '../dummyData';
 
 const { width } = Dimensions.get('screen');
 
@@ -34,16 +34,14 @@ const ProfileText = styled.Text`
 
 const Detail = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState(navigation.getParam('username'));
-  // const [username, setUsername] = useState('pual__k');
+  const [refresh, setRefresh] = useState(false);
   const [resultData, setResultData] = useState({});
-  // const [resultData, setResultData] = useState(userData);
-  async function fetchUrl() {
+  const username = navigation.getParam('username');
+  const platform = navigation.getParam('platform', 'kakao');
+
+  async function fetchUrl(type) {
     try {
       type === 'refresh' ? setRefresh(true) : setLoading(true);
-
-      const platform = 'kakao';
-      /* const username = 'pual__k'; */
 
       let accountId = '';
       let seasonId = '';
@@ -52,21 +50,6 @@ const Detail = ({ navigation }) => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${API_KEY}`;
       axios.defaults.headers.common['Accept'] = 'application/vnd.api+json';
 
-      // GET user accound id
-      /* const response = await fetch(
-        // `${API_END_POINT}/${platform}/players?filter[playerNames]=${username}`,
-        'https://api.pubg.com/shards/kakao/players/account.5134075579024a26a6562f9f0370cca0/seasons/division.bro.official.pc-2018-04',
-        {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${API_KEY}`,
-            Accept: 'application/vnd.api+json'
-          }
-        }
-      );
-      const json = await response.json();
-      console.log(json);
-      setResultData(json); */
       await axios
         .get(
           `${API_END_POINT}/${platform}/players?filter[playerNames]=${username}`
@@ -83,7 +66,6 @@ const Detail = ({ navigation }) => {
           }
         })
         .catch(err => {
-          console.log(err);
           console.log({
             errN: 'user account id',
             err
