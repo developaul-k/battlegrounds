@@ -29,5 +29,6 @@
 
 #### Screenshot
 
-- ![screensh](./Screenshot_home.png) ![screensh](./Screenshot_detail1.png)
-- ![screensh](./Screenshot_detail2.png) ![screensh](./Screenshot_detail3.png)
+![screensh](./Screenshot_home.png) ![screensh](./Screenshot_detail1.png)
+<br>
+![screensh](./Screenshot_detail2.png) ![screensh](./Screenshot_detail3.png)
