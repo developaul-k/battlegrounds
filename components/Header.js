@@ -14,7 +14,7 @@ const Image = styled.Image`
   height: 40px;
 `;
 
-const Header = () => (
+const Header = () =>
   <Container
     style={{
       paddingVertical: 20,
@@ -28,7 +28,6 @@ const Header = () => (
         uri: logo
       }}
     />
-  </Container>
-);
+  </Container>;
 
 export default Header;
