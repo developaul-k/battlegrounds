@@ -23,6 +23,11 @@
 * [x] 유저 프로필 조회 API
 * [x] 시즌 조회 API
 * [x] 유저 시즌 전적 조회 API
-* [ ] CSS 디자인
+* [x] CSS 디자인
 * [x] 헤드샷 %로 변경
 * [x] 유저 시즌 전적 data { solo, duo, squad } 순으로 정렬하기
+
+#### Screenshot
+
+- ![screensh](./Screenshot_home.png) ![screensh](./Screenshot_detail1.png)
+- ![screensh](./Screenshot_detail2.png) ![screensh](./Screenshot_detail3.png)

@@ -4,9 +4,7 @@ import styled, { css } from 'styled-components';
 
 const { width } = Dimensions.get('screen');
 
-const Container = styled.View`
-  flex: 1;
-`;
+const Container = styled.View`flex: 1;`;
 
 const ProfileContainer = styled.View`
   margin: 10px;
@@ -43,7 +41,7 @@ const Text = styled.Text`
     props.bold &&
     css`
       font-weight: bold;
-    `}
+    `};
 `;
 
 const List = ({
@@ -60,27 +58,35 @@ const List = ({
   roundMostKills
 }) => {
   const getKD = (kills, losses) => {
-    return (kills / losses).toFixed(2);
+    const kd = (kills / losses).toFixed(2);
+    return kd === 'NaN' ? 0 : kd;
   };
   const getKDA = (kills, assists, losses) => {
-    return ((kills + assists) / losses).toFixed(2);
+    const kda = ((kills + assists) / losses).toFixed(2);
+    return kda === 'NaN' ? 0 : kda;
   };
   const getAverageWin = (wins, roundsPlayed) => {
-    return `${((wins / roundsPlayed) * 100).toFixed(2)}%`;
+    const averageWin = `${(wins / roundsPlayed * 100).toFixed(2)}`;
+    console.log({ averageWin });
+    return averageWin === 'NaN' ? '0%' : `${averageWin}%`;
   };
   const getAverageDamage = (damageDealt, roundsPlayed) => {
-    return (damageDealt / roundsPlayed).toFixed(0);
+    const averageDamage = (damageDealt / roundsPlayed).toFixed(0);
+    return averageDamage === 'NaN' ? 0 : averageDamage;
   };
   const getToFixed = (value, length) => {
-    return value.toFixed(length);
+    const toFixed = value.toFixed(length);
+    return toFixed === 'NaN' ? 0 : toFixed;
   };
-  const getHeadShot = (headshotkills, kills) =>
-    `${((headshotkills / kills) * 100).toFixed(1)}%`;
+  const getHeadShot = (headshotkills, kills) => {
+    const headShot = `${(headshotkills / kills * 100).toFixed(1)}`;
+    return headShot === 'NaN' ? 0 : `${headShot}%`;
+  };
 
   return (
     <Container>
       <ProfileContainer index={index}>
-        <Text size='big'>
+        <Text size="big">
           {index === 0 ? '솔로' : index === 1 ? '듀오' : '스쿼드'}
         </Text>
         <Text>
@@ -90,39 +96,57 @@ const List = ({
       <CardContainer>
         <Card>
           <Text bold>K/D</Text>
-          <Text>{getKD(kills, losses)}</Text>
+          <Text>
+            {getKD(kills, losses)}
+          </Text>
         </Card>
         <Card>
           <Text bold>승률</Text>
-          <Text>{getAverageWin(wins, losses)}</Text>
+          <Text>
+            {getAverageWin(wins, losses)}
+          </Text>
         </Card>
         <Card>
           <Text bold>Top10</Text>
-          <Text>{getAverageWin(top10s, roundsPlayed)}</Text>
+          <Text>
+            {getAverageWin(top10s, roundsPlayed)}
+          </Text>
         </Card>
         <Card>
           <Text bold>KDA</Text>
-          <Text>{getKDA(kills, assists, losses)}</Text>
+          <Text>
+            {getKDA(kills, assists, losses)}
+          </Text>
         </Card>
         <Card>
           <Text bold>평균 딜량</Text>
-          <Text>{getAverageDamage(damageDealt, roundsPlayed)}</Text>
+          <Text>
+            {getAverageDamage(damageDealt, roundsPlayed)}
+          </Text>
         </Card>
         <Card>
           <Text bold>여포</Text>
-          <Text>{roundMostKills}</Text>
+          <Text>
+            {roundMostKills}
+          </Text>
         </Card>
         <Card>
           <Text bold>헤드샷</Text>
-          <Text>{getHeadShot(headshotKills, kills)}</Text>
+          <Text>
+            {getHeadShot(headshotKills, kills)}
+          </Text>
         </Card>
         <Card>
           <Text bold>저격</Text>
-          <Text>{getToFixed(longestKill, 2)}m</Text>
+          <Text>
+            {getToFixed(longestKill, 2)}m
+          </Text>
         </Card>
         <Card>
           <Text bold>게임 수</Text>
-          <Text>{roundsPlayed}</Text>
+          <Text>
+            {roundsPlayed}
+          </Text>
         </Card>
       </CardContainer>
     </Container>
