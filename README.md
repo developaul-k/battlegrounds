@@ -9,7 +9,7 @@
 - React Hooks
 - Styled Components
 
-#### 다음과 같은 기록을 분석합니다.
+### 다음과 같은 기록을 분석합니다.
 
 * 승, 탑, 패
 * K/D
@@ -25,7 +25,7 @@
 
 ---
 
-#### TODO
+### TODO
 * [x] 네비게이션 구성 (Home, Detail)
 * [x] 유저 프로필 조회 API
 * [x] 시즌 조회 API
@@ -34,7 +34,7 @@
 * [x] 헤드샷 %로 변경
 * [x] 유저 시즌 전적 data { solo, duo, squad } 순으로 정렬하기
 
-#### Screenshot
+### Screenshot
 
 ![screensh](./Screenshot_home.png) ![screensh](./Screenshot_detail1.png)
 <br>
